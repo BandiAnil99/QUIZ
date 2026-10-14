@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f5f7f2">
+    <title>Classroom Quiz Studio</title>
+    <link rel="stylesheet" href="/styles.css">
+    <script src="/app.js" defer></script>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="/" aria-label="Classroom Quiz Studio home">
+        <span class="brand-mark" aria-hidden="true">Q</span>
+        <span>classroom<span class="brand-light"> / quiz studio</span></span>
+      </a>
+      <span class="topbar-note"><span class="status-dot"></span> Powered by Gemini</span>
+    </header>
+
+    <main class="workspace">
+      <section class="builder" aria-labelledby="page-title">
+        <div class="eyebrow"><span class="eyebrow-line"></span> TEACHER WORKSPACE</div>
+        <h1 id="page-title">Make a quiz<br>that <span>fits your class.</span></h1>
+        <p class="intro">Describe what your students are learning. Gemini will ask for any missing details, then build a standards-aware quiz in English.</p>
+
+        <div class="conversation" id="conversation" aria-live="polite" aria-label="Quiz conversation">
+          <div class="welcome-message">
+            <span class="gemini-mark" aria-hidden="true">G</span>
+            <div>
+              <p>What are we learning today?</p>
+              <span>Any grade. Any school subject.</span>
+            </div>
+          </div>
+        </div>
+
+        <form class="composer" id="composer">
+          <label class="sr-only" for="prompt">Describe the quiz you need</label>
+          <textarea id="prompt" rows="3" maxlength="4000" placeholder="Try: A 10-question Grade 6 science quiz on ecosystems, aligned to NGSS. Mix multiple choice and short answer."></textarea>
+          <div class="composer-footer">
+            <span class="composer-hint">Include grade, subject, topic, or standards if you know them.</span>
+            <button class="send-button" id="send-button" type="submit"><span>Build quiz</span><span aria-hidden="true">&#8599;</span></button>
+          </div>
+        </form>
+        <p class="privacy-note">Your Gemini API key stays on the server.</p>
+      </section>
+
+      <section class="preview" aria-labelledby="preview-title">
+        <div class="preview-header">
+          <div>
+            <div class="preview-kicker">YOUR WORKSHEET</div>
+            <h2 id="preview-title">Quiz preview</h2>
+          </div>
+          <div class="preview-actions" id="preview-actions" hidden>
+            <button class="icon-action" id="copy-button" type="button" title="Copy quiz">Copy</button>
+            <button class="icon-action" id="print-button" type="button" title="Print quiz">Print</button>
+          </div>
+        </div>
+        <div class="preview-body" id="preview-body">
+          <div class="empty-preview" id="empty-preview">
+            <div class="paper-illustration" aria-hidden="true">
+              <div class="paper-top"></div>
+              <div class="paper-heading"></div>
+              <div class="paper-rule"></div>
+              <div class="paper-question"><span></span><i></i><i></i></div>
+              <div class="paper-question"><span></span><i></i><i></i></div>
+              <div class="paper-question"><span></span><i></i></div>
+            </div>
+            <h3>A fresh page, ready.</h3>
+            <p>Your quiz will take shape here.<br>Start with a topic or learning goal.</p>
+          </div>
+          <article class="quiz" id="quiz" hidden></article>
+        </div>
+        <div class="preview-footer" id="preview-footer" hidden>
+          <label class="answer-toggle"><input id="show-answers" type="checkbox"><span class="toggle-track" aria-hidden="true"></span><span>Show answer key</span></label>
+          <span class="preview-count" id="preview-count"></span>
+        </div>
+      </section>
+    </main>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  </body>
+</html>
